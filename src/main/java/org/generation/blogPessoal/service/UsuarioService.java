@@ -19,6 +19,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
+	// encriptar senha antes de ser salva no banco de dados
 	public Usuario CadastrarUsuario(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
