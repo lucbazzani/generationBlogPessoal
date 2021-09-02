@@ -25,7 +25,7 @@ public class TemaController {
 	@Autowired 
 	private TemaRepository repository;
 	
-	@GetMapping
+	@GetMapping()
 	public ResponseEntity<List<Tema>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
@@ -36,7 +36,7 @@ public class TemaController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/nome{nome}")
+	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Tema>> getByName(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(nome));
 	}

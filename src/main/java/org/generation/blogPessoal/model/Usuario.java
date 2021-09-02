@@ -27,7 +27,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull(message = "O nome é obrigatório")
+	@NotNull(message = "O atributo nome é obrigatório")
 	@Size(min = 5, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String nome;
 	
@@ -40,9 +40,14 @@ public class Usuario {
 	@Size(min = 8, message = "O atributo senha deve ter no mínimo 8 caracteres")
 	private String senha;
 	
-	@Column(name = "dt_nascimento")
+	private String foto;
+	
+	private String tipo;
+	
+	/*@Column(name = "dt_nascimento")
 	@JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dataNascimento;
+    */
 	
 	@OneToMany (mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
@@ -50,12 +55,12 @@ public class Usuario {
 
 	// Primeiro método Construtor
 
-	public Usuario(long id, String nome, String usuario, String senha, LocalDate dataNascimento) {
+	public Usuario(long id, String nome, String usuario, String senha/*, LocalDate dataNascimento*/) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
-		this.dataNascimento = dataNascimento;
+		//this.dataNascimento = dataNascimento;
 	}
 
 	// Segundo método Construtor
@@ -95,13 +100,13 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public LocalDate getDataNascimento() {
+	/*public LocalDate getDataNascimento() {
 		return this.dataNascimento;
 	}
 
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
+	}*/
 
 	public List<Postagem> getPostagem() {
 		return this.postagem;
@@ -109,5 +114,21 @@ public class Usuario {
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

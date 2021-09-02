@@ -27,20 +27,20 @@ public class UsuarioRepositoryTest {
 	@BeforeAll //rodará antes do teste
 	void start() {
 		
-		LocalDate data = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		//LocalDate data = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		
 		//insere dados no banco
-		Usuario usuario = new Usuario(0, "João da Silva", "joao@email.com", "12345678", data);
+		Usuario usuario = new Usuario(0, "João da Silva", "joao@email.com", "12345678"/*, data*/);
 		if(usuarioRepository.findByUsuario(usuario.getUsuario()).isEmpty()) {
 			usuarioRepository.save(usuario);
 		}
 		
-	    usuario = new Usuario(0, "Frederico da Silva", "frederico@email.com.br", "123465278", data);
+	    usuario = new Usuario(0, "Frederico da Silva", "frederico@email.com.br", "123465278"/*, data*/);
 		if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent()) {
 			usuarioRepository.save(usuario);
 		}
 
-        usuario = new Usuario(0, "Paulo Antunes Silva", "paulo@email.com.br", "123465278", data);
+        usuario = new Usuario(0, "Paulo Antunes Silva", "paulo@email.com.br", "123465278"/*, data*/);
         if(!usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent()) {
             usuarioRepository.save(usuario);
         }  
